@@ -6,6 +6,17 @@ from art import logo
     # Ace can count as 11 or 1
 
 # deck of cards simplified
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+def deal_card():
+    """returns random card"""
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+# user and ai cards
+user_cards = []
+computer_cards = []
+
+for num in range(2):
+    
 # play game
 print(logo)
