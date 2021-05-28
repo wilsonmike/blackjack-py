@@ -17,7 +17,7 @@ user_cards = []
 computer_cards = []
 
 for num in range(2):
-    deal_card()
+    user_cards.append(deal_card())
     
 # play game
 print(logo)
