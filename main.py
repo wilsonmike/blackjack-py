@@ -16,9 +16,14 @@ def deal_card():
 user_cards = []
 computer_cards = []
 
+
 for num in range(2):
     user_cards.append(deal_card())
     computer_cards.append(deal_card())
-    
+
+def calculate_score(cards):
+    return sum(cards)
+
+
 # play game
 print(logo)
