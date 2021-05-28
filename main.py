@@ -30,6 +30,15 @@ def compare(user_score, computer_score):
         return "Lose, computer won with a Blackjack :["
     elif user_score == 0:
         return "Win! With a Blackjack :]"
+    elif user_score > 21:
+        return "You went over 21. Good luck next time :["
+    elif computer_score > 21:
+        return "The computer went over, you win! :]"
+    elif user_score > computer_score:
+        return "You Win. Highest pair :]"
+    else:
+        return "You Lose. :["
+    
 
 # user and ai cards
 user_cards = []
