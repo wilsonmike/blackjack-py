@@ -1,5 +1,7 @@
 import random 
 from art import logo
+import os
+clear = lambda: os.system('cls')
 
 # house rules
     # the deck is unlimited in size
@@ -40,41 +42,46 @@ def compare(user_score, computer_score):
         return "You Lose. :["
     
 
+def play_game():
 # user and ai cards
-user_cards = []
-computer_cards = []
-is_game_over = False
+    user_cards = []
+    computer_cards = []
+    is_game_over = False
 
-for _ in range(2):
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
+    for _ in range(2):
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
 
-while not is_game_over:
-    user_score = calculate_score(user_cards)
-    computer_score = calculate_score(computer_cards)
-    print(logo)
-    print(f" Your cards: {user_cards}, current score: {user_score}")
-    print(f" Computer's first card: {computer_cards[0]}")
+    while not is_game_over:
+        user_score = calculate_score(user_cards)
+        computer_score = calculate_score(computer_cards)
+        print(logo)
+        print(f" Your cards: {user_cards}, current score: {user_score}")
+        print(f" Computer's first card: {computer_cards[0]}")
 
-    if user_score == 0 or computer_score == 0 or user_score > 21:
-        is_game_over = True
-    else:
-        user_should_deal = input("Type 'hit' to get another card, type 'stay' to pass ")
-        if user_should_deal == "hit":
-            user_cards.append(deal_card())
-        else:
+        if user_score == 0 or computer_score == 0 or user_score > 21:
             is_game_over = True
-    # play game
+        else:
+            user_should_deal = input("Type 'hit' to get another card, type 'stay' to pass ")
+            if user_should_deal == "hit":
+                user_cards.append(deal_card())
+            else:
+                is_game_over = True
+        # play game
 
-while computer_score != 0 and computer_score < 17:
-    computer_cards.append(deal_card())
-    computer_score = calculate_score(computer_cards)
+    while computer_score != 0 and computer_score < 17:
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
 
-print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
-print("Scores Below")
-print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
-print(f"Your final hand: {user_cards}, Your final score: {user_score}")
-print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
-print(f"The computers final hand: {computer_cards}, The computers final score: {computer_score}")
-print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦") 
-print(compare(user_score, computer_score))
+    print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
+    print("Scores Below")
+    print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
+    print(f"Your final hand: {user_cards}, Your final score: {user_score}")
+    print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦")
+    print(f"The computers final hand: {computer_cards}, The computers final score: {computer_score}")
+    print("◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦") 
+    print(compare(user_score, computer_score))
+
+while input("Do you want to play a game of BlackJack? Type 'y' or 'n': ") == "y":
+    clear()
+    play_game()
