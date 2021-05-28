@@ -12,15 +12,6 @@ def deal_card():
     card = random.choice(cards)
     return card
 
-# user and ai cards
-user_cards = []
-computer_cards = []
-
-
-for num in range(2):
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
-
 def calculate_score(cards):
     if sum(cards) == 21 and len(cards) == 2:
         return 0
@@ -31,7 +22,16 @@ def calculate_score(cards):
         
     return sum(cards)
 
+# user and ai cards
+user_cards = []
+computer_cards = []
 
+for _ in range(2):
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+
+calculate_score(user_cards)
+calculate_score(computer_cards)
 
 # play game
 print(logo)
