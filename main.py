@@ -17,6 +17,7 @@ user_cards = []
 computer_cards = []
 
 for num in range(2):
+    deal_card()
     
 # play game
 print(logo)
