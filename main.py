@@ -23,6 +23,14 @@ def calculate_score(cards):
         
     return sum(cards)
 
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return "Draw :|"
+    elif computer_score == 0:
+        return "Lose, computer won with a Blackjack :["
+    elif user_score == 0:
+        return "Win! With a Blackjack :]"
+
 # user and ai cards
 user_cards = []
 computer_cards = []
@@ -32,13 +40,24 @@ for _ in range(2):
     user_cards.append(deal_card())
     computer_cards.append(deal_card())
 
-user_score = calculate_score(user_cards)
-computer_score = calculate_score(computer_cards)
-print(logo)
-print(f" Your cards: {user_cards}, current score: {user_score}")
-print(f" Computer's first card: {computer_cards[0]}")
+while not is_game_over:
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+    print(logo)
+    print(f" Your cards: {user_cards}, current score: {user_score}")
+    print(f" Computer's first card: {computer_cards[0]}")
 
-if user_score == 0 or computer_score == 0 or user_score > 21:
-    is_game_over = True
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+        is_game_over = True
+    else:
+        user_should_deal = input("Type 'hit' to get another card, type 'stay' to pass ")
+        if user_should_deal == "hit":
+            user_cards.append(deal_card())
+        else:
+            is_game_over = True
+    # play game
 
-# play game
+while computer_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculate_score(computer_cards)
+    
