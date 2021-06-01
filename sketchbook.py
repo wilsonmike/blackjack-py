@@ -14,8 +14,11 @@ def move_left():
 
 def move_right():
     tim.right(10)
-    
+
 
 screen.listen()
-screen.onkey(key="space", fun=move_forwards)
+screen.onkey(key="w", fun=move_forwards)
+screen.onkey(key="s", fun=move_backwards)
+screen.onkey(key="a", fun=move_left)
+screen.onkey(key="d", fun=move_right)
 screen.exitonclick()
